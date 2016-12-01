@@ -40,7 +40,6 @@ passport.use('local.signup', new LocalStrategy({
             if(err){
                 return done(err)
             }
-            console.log(result)
             return done(null, newUser);
         });
         
@@ -68,7 +67,7 @@ passport.use('local.login', new LocalStrategy({
         if(!user.validPassword(password)){
              return done(null, false, {errorMessage: 'Password is invalid'}) 
         }
-        
+        console.log('User data', user)
         return done(null, user);
         
     });
