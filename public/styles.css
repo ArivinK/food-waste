@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 575%;
+    color: #4A4444;
+    text-transform: uppercase;
+    letter-spacing: 1%;
+    margin: 25% 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 275%;
+    color: #E5E5E5;
+    text-transform: uppercase;
+    letter-spacing: 1%;
+}
+
+h3 {
+    text-align: center;
+    font-size: 275%;
+    color: #A3F3D3;
+    text-transform: uppercase;
+    letter-spacing: 1%;
+}
+/*start parallax*/
+
+.parallax {
+    background: url("http://www.thenewstrans.com/wp-content/uploads/2013/09/Child-Beggars.gif") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.parallax2 {
+    background: url("http://www.w3newbie.com/wp-content/uploads/parallax-background.png") repeat fixed 100%;
+
+}
+
+.parallax-inner {
+    padding-top: 15%;
+    padding-bottom: 15%;
+
+}
+
+/*end parallax*/

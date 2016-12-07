@@ -12,7 +12,7 @@ var app = express();
 
 var db
 
-//mongoose.connect('mongodb://anu:happyanu123@ds113678.mlab.com:13678/fooddb');
+mongoose.connect('mongodb://anu:happyanu123@ds113678.mlab.com:13678/fooddb');
 mongoose.connect('mongodb://localhost/foodwaste');
 require('./config/passport');
 
