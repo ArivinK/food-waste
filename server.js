@@ -15,8 +15,12 @@ var app = express();
 
 var db
 
+<<<<<<< HEAD
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://anu:happyanu123@ds113678.mlab.com:13678/fooddb');
+=======
+mongoose.connect('mongodb://anu:happyanu123@ds113678.mlab.com:13678/fooddb');
+>>>>>>> 4e0047e29775a0c49654cabc553f215fa756aa81
 mongoose.connect('mongodb://localhost/foodwaste');
 require('./config/passport');
 //require('./config/pass');
