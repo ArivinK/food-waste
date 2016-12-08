@@ -3,74 +3,48 @@ var router = express.Router();
 
 var passport = require('passport');
 
-var Info = require('../models/info')
+var User = require('../models/user');
+var Info = require('../models/info');
+
+var smtpTransport = require("nodemailer-smtp-transport")
+var nodemailer = require('nodemailer');
 
 
 
 router.get('/', (req, res) => {
-   res.render('index.ejs'); 
+   res.render('index.ejs',{title: 'Stop Food Waste'}); 
 });
 
 router.get('/user/signup', (req, res) => {
-   res.render('user/signup.ejs'); 
+   res.render('user/signup.ejs', {title: 'Stop Food Waste - Sign Up'}); 
 });
 
 router.post('/user/signup', passport.authenticate('local.signup', {
-    //succesRedirect: '/profile',
-    failureRedirect: '/',
+    failureRedirect: '/user/signup',
     failureFlash: true
 }), function(req, res){
-    res.redirect('/user/profile');
+    res.redirect('/');
 });
 
 router.get('/user/login', (req, res) => {
-   res.render('user/login.ejs', {userData:req.user}); 
+   res.render('user/login.ejs', {title: 'Stop Food Waste - Login', userData:req.user}); 
 });
 
 router.post('/user/login', passport.authenticate('local.login', {
-    //succesRedirect: '/profile',
-    failureRedirect: '/',
+    failureRedirect: '/user/login',
     failureFlash: true
 }), function(req, res){
-    res.redirect('/user/profile');
-});
-
-
-
-router.get('/user/add-info', (req, res) => {
-   res.render('user/add-info.ejs'); 
-});
-
-router.post('/user/add-info', (req, res) =>{
-    
-    var items = {
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        food: req.body.food,
-        quantity: req.body.quantity,
-        location: req.body.location,
-        time: req.body.time,
-        created: new Date()
+    if(req.user.role == "NGO"){
+        res.redirect('/user/home');
+    }else{
+       res.redirect('/user/profile'); 
     }
     
-    console.log(items)
-    
-    var newInfo = new Info(items);
-    newInfo.save(function(err, data){
-        if(err){
-            console.log(err)
-        }
-        
-        res.render('user/add-info.ejs'); 
-        
-    });
-    
 });
 
-router.get('/user/profile', (req, res) => {
-    console.log(req.user)
-    res.render('user/profile.ejs', {userData:req.user}); 
+router.get('/logout', (req, res, next) => {
+    req.logout();
+    res.redirect('/');
 });
 
 

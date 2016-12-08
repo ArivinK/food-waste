@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stop Food Waste - <%= userData.name %></title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+
+
+
+
+<body>
+<nav class="navbar navbar-default nav_bar">
+  <div class="container">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/user/home">Stop Food Waste</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+       <li><a href="#" class="">Images</a></li>
+        <li><a href="#" class="">Food Donors</a></li>
+        <li><a href="#" class="">Blog</a></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= userData.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/user/add-profile">Add Profile</a></li>
+            <li><a href="/user/profile">View Profile</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+<div class="jumbotron jumbo" id="map_canvas">
+
+</div>
+
+<!--
+<span id="lat"></span><br>
+<span id="lng"></span>
+-->
+ 
+<div class="container">
+    <div class="row">
+        <h3 class="text-center">Food Donation Details</h3>
+    </div>
+    
+    <div class="row">
+        <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">Donor name</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.donor %>
+           </div>
+        </div>
+              
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">Name of Contact Person</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.name %>
+           </div>
+       </div>
+
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">Phone Number</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.phone %>
+           </div>
+       </div>
+
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">Address</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.address %>
+           </div>
+       </div>
+
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">City</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.city %>
+           </div>
+       </div>
+
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">State</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.state %>
+           </div>
+       </div>
+
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">Type of Donor</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.donortype %>
+           </div>
+       </div>
+
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">Type of Food</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= infoData.food %>
+           </div>
+       </div>
+
+       <div class="row form-group">
+           <div class="col-md-2">
+               <label for="">Pick Up Date</label>
+           </div>
+
+           <div class="col-md-10">
+               <%= dateTime %><br>
+           </div>
+       </div>
+    </div>
+    
+</div>
+
+ 
+<%- include ../partials/footer.ejs %> 
+<!--
+<script type="text/javascript">
+  function writeAddressName(latLng) {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      "location": latLng
+    },
+    function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK)
+        document.getElementById("map_canvas").innerHTML =  results[0].formatted_address;
+        
+      else
+        document.getElementById("error").innerHTML += "Unable to retrieve your address" + "<br />";
+    });
+  }
+
+  function geolocationSuccess(position) {
+    var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      
+    writeAddressName(userLatLng);
+
+    var myOptions = {
+      zoom : 16,
+      center : userLatLng,
+      mapTypeId : google.maps.MapTypeId.ROADMAP
+    };
+    
+    var mapObject = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    
+    new google.maps.Marker({
+      map: mapObject,
+      position: userLatLng
+    });
+    
+    var circle = new google.maps.Circle({
+      center: userLatLng,
+      radius: position.coords.accuracy,
+      map: mapObject,
+      fillColor: '#0000FF',
+      fillOpacity: 0.5,
+      strokeColor: '#0000FF',
+      strokeOpacity: 1.0
+    });
+    mapObject.fitBounds(circle.getBounds());
+  }
+
+  function geolocationError(positionError) {
+    document.getElementById("error").innerHTML += "Error: " + positionError.message + "<br />";
+  }
+
+  function geolocateUser() {
+    
+    if (navigator.geolocation)
+    {
+      var positionOptions = {
+        enableHighAccuracy: true,
+        timeout: 10 * 1000 
+      };
+      navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, positionOptions);
+    }
+    else
+      document.getElementById("error").innerHTML += "Your browser doesn't support the Geolocation API";
+  }
+
+  window.onload = geolocateUser;  
+</script> 
+-->
+
+<script>
+function initMap() {
+    getCoordinates('<%= infoData.address %> <%= infoData.city %>', function(coords){
+        console.log("Latitude",coords[0])
+        console.log("Longitude",coords[1])
+        var mapOptions = {
+            zoom: 16,
+            center: new google.maps.LatLng(coords[0], coords[1]),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    
+        var myLatLng = {lat: coords[0], lng: coords[1]};
+        
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    
+        
+    });
+}
+
+
+function getCoordinates(address, callback) {
+    var coordinates;
+    
+    geocoder = new google.maps.Geocoder();
+    
+    geocoder.geocode({address: address}, function(results, status){
+        coords_obj1 = results[0].geometry.location.lat();
+        coords_obj2 = results[0].geometry.location.lng();
+        coordinates = [coords_obj1, coords_obj2];
+        callback(coordinates);
+    })
+}
+    
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBBR43OmMIqp6GQVTqnFveNQ6xIrBvdPM4&callback=initMap"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBR43OmMIqp6GQVTqnFveNQ6xIrBvdPM4" async defer></script>-->
+<script src="/js/app.js"></script>
+   
+<!--<script src="https://maps.googleapis.com/maps/api/geocode/json?&key=AIzaSyBBR43OmMIqp6GQVTqnFveNQ6xIrBvdPM4"></script>-->
+    
+
+</body>
+</html>
+
+
+
+
+
+

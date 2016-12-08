@@ -1,7 +1,6 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-var User = require('../models/user');
 var Info = require('../models/info');
 
 passport.serializeUser(function(user, done) {
@@ -9,22 +8,18 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+  Info.findById(id, function(err, user) {
     done(err, user);
   });
 });
 
-passport.use('local.signup', new LocalStrategy({
+passport.use('local.add-info', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
 }, function(req, email, password, done){
-    var name = req.body.name;
-    var email = req.body.email;
-    var password = req.body.password;
-    var role = req.body.role;
     
-    User.findOne({'email': email}, function(err, user){
+    Info.findOne({'email': email}, function(err, user){
         if(err){
             return done(err);
         }
@@ -33,22 +28,31 @@ passport.use('local.signup', new LocalStrategy({
             return done(null, false, {errorMessage: 'Email Already Exist'})
         }
         
-        var newUser = new User();
-        newUser.name = name;
-        newUser.email = email;
-        newUser.password = newUser.encryptPassword(password);
-        newUser.role = role;
+        var newInfo = new Info();
+        newInfo.donor = req.body.donor;
+        newInfo.name = req.body.name;
+        newInfo.email = req.body.email;
+        newInfo.password = newInfo.encryptPassword(req.body.password);
+        newInfo.phone = req.body.phone;
+        newInfo.address = req.body.address;
+        newInfo.city = req.body.city;
+        newInfo.state = req.body.state;
+        newInfo.donortype = req.body.donortype;
+        newInfo.food = req.body.food;
+        newInfo.time = req.body.time;
+        newInfo.created = new Date()
         
-        newUser.save(function(err, result){
+        newInfo.save(function(err, result){
             if(err){
                 return done(err)
             }
-            return done(null, newUser);
+            return done(null, newInfo);
         });
         
     });
     
 }));
+
 
 passport.use('local.login', new LocalStrategy({
     usernameField: 'email',
@@ -56,7 +60,7 @@ passport.use('local.login', new LocalStrategy({
     passReqToCallback: true
 }, function(req, email, password, done){
     
-    User.findOne({'email': email}, function(err, user){
+    Info.findOne({'email': email}, function(err, user){
         if(err){
             return done(err);
         }
@@ -73,7 +77,6 @@ passport.use('local.login', new LocalStrategy({
     });
     
 }));
-
 
 
 
