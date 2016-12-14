@@ -1,0 +1,406 @@
+body {
+  font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  line-height:1.42857143;
+  color:#666666;
+  background:#fff;
+}
+
+#nav_bar {
+  height:93px;
+  width:100%;
+  display:block;
+  border-radius:0;
+  background:white;
+    color: black;
+  margin-bottom:0px;
+}
+
+#nav-lists > li > a {
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+  vertical-align:middle;
+  word-spacing:0;
+  margin-top:20px;
+    color: #666666;
+}
+
+a.navbar-brand.navbar-link {
+  margin-top:20px;
+  font-weight:bold;
+  font-size:25px;
+    color: #666666;
+}
+
+.navbar-brand > a:hover {
+    color: #00aff0;
+}
+
+#nav-lists > li > a:hover {
+  color:#00aff0;
+}
+
+#corouselDiv {
+  height:450px;
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+.carousel-inner {
+  height:450px;
+}
+
+#fact-div {
+  font-size:18px;
+  font-weight:normal;
+  font-family:'Open Sans', sans-seriff;
+  line-height:24px;
+  margin-top:15px;
+}
+
+#fact-div > p {
+  width:100%;
+  text-align:center;
+}
+
+#cause > ul > li {
+  font-size:19px;
+  font-weight:normal;
+  font-family:'Open Sans', sans-seriff;
+  line-height:24px;
+  margin-top:15px;
+}
+
+#cause > h2 {
+  width:100%;
+  text-align:left;
+}
+
+#factContainer {
+  margin-top:20px;
+  padding:15px 15px 20px 15px;
+  display:block;
+}
+
+#factContainer h2 {
+  text-transform:uppercase;
+  font-family:'Playfair Display';
+  font-weight:500;
+  line-height:18px;
+  word-spacing:0px;
+  margin-bottom:20px;
+}
+
+#aLink {
+  text-align:right;
+  font-size:20px;
+}
+
+#aLink > a:hover {
+  text-decoration:none;
+  color:#428bca;
+}
+
+.divider {
+  height:4px;
+  width:180px;
+  margin:0 auto;
+  background-position:0% 0%;
+  background-color:#428bca;
+  display:block;
+  position:absolute;
+  left:0;
+  right:0;
+}
+
+.seperator {
+  height:2px;
+  width:100%;
+  left:0;
+  right:0;
+  background-color:#efefef;
+}
+
+.info-icon {
+  text-align:center;
+}
+
+.info-icon i {
+  font-size:60px;
+  margin-top:50px;
+  color:#428bca;
+}
+
+.blog-list {
+  padding-top:15px;
+}
+
+.single-img img {
+  margin-bottom:5px;
+  margin-top:20px;
+}
+
+.single-info h3 {
+  font-size:25px;
+}
+
+.single-info-bottom {
+  font-size:12px;
+  font-weight:300;
+  overflow:hidden;
+  padding:0 40px;
+}
+
+/***********************************************CSS FOR HOMEPAGE**********************************************/
+
+#nav-bar{
+    background-color: white;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    color: #666666;
+}
+
+.head-brand{
+    font-size: 25px;
+    font-weight: 700;
+    color: #666666;
+}
+
+.navbar-header > a:hover{
+    color: #00aff0;
+    text-decoration: none;
+}
+
+.nav > li > a{
+    color: #666666;
+    font-size: 18px;
+}
+
+.nav > li > a:hover{
+    background-color: white;
+    text-decoration: none;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover{
+    background-color: white;
+    text-decoration: none;
+}
+
+#jumbo{
+    background: url(/img/6.jpg) no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 302px;
+}
+
+#donate{
+    font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    margin-top: 70px;
+}
+
+#jumbo i{
+    padding-right: 10px;
+}
+
+#contactRow{
+    text-align: center;
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+#nav_lists > li > a {
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+  word-spacing:0;
+    color: #666666;
+}
+
+#nav_lists > li > a:hover {
+  color:#00aff0;
+}
+
+#donorH3 > a{
+   color: #666666; 
+}
+
+#donorH3 > a:hover{
+    text-decoration: none;
+    color: #666666;
+}
+
+#donorP > a{
+   color: #666666; 
+}
+
+#donorP > a:hover{
+    text-decoration: none;
+    color: #666666;
+}
+
+.orgDiv {
+    min-height: 50px;
+/*    line-height: 45px;*/
+    text-align: center;
+    border: 2px solid #efefef;
+    margin-bottom: 30px;
+}
+
+.orgDiv > h3 > a {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

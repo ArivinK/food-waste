@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ../partials/index_header.ejs %>
+
+<body>
+<nav class="navbar " id="nav-bar">
+  <div class="container">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand head-brand" href="/user/add-info">Stop Food Waste</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" id="nav_lists">
+       <li><a href="/user/image-gallery" class="">Images</a></li>
+        <li><a href="#" class="">Food Donors</a></li>
+        <li><a href="#" class="">Blog</a></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= orgData.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" >
+            <li><a href="/user/add-profile">Add Profile</a></li>
+            <li><a href="/user/profile">View Profile</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+   
+<div class="jumbotron" id="jumbo" style="margin-bottom:0px">
+    <h3 id="donate"><i class="fa fa-home" aria-hidden="true"></i><%= orgData.name %></h3>
+</div> 
+ 
+<div class="row jumbo" id="map_canvas" style="margin-bottom:40px">
+
+</div>
+  
+<div class="container" style="margin-bottom: 70px;">
+   <div class="row">
+          <div class="col-md-12">
+                <h2 class="text-uppercase text-center">View Profile</h2>
+                <div class="row divider"></div>
+          </div>
+          
+          <div class="col-md-12" id="fact-div">
+            <p class="text-center"></p>
+        </div>
+    </div>
+   
+   
+    <div class="row" id="contactRow">
+        
+   </div>
+</div>
+   
+
+<%- include ../partials/footer.ejs %>     
+   
+   
+<script>
+function initMap() {
+    var data = "<%= orgData.address %> <%= orgData.city %> <%= orgData.state %>" 
+    console.log(data)
+    getCoordinates(data, function(coords){
+        console.log("Latitude",coords[0])
+        console.log("Longitude",coords[1])
+        var mapOptions = {
+            zoom: 18,
+            scrollwheel: false,
+            center: new google.maps.LatLng(coords[0], coords[1]),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    
+        var myLatLng = {lat: coords[0], lng: coords[1]};
+        
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    
+        
+    });
+}
+
+
+function getCoordinates(address, callback) {
+    var coordinates;
+    
+    geocoder = new google.maps.Geocoder();
+    
+    geocoder.geocode({address: address}, function(results, status){
+        coords_obj1 = results[0].geometry.location.lat();
+        coords_obj2 = results[0].geometry.location.lng();
+        coordinates = [coords_obj1, coords_obj2];
+        callback(coordinates);
+    })
+}
+    
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBBR43OmMIqp6GQVTqnFveNQ6xIrBvdPM4&callback=initMap"></script>
+    
+</body>
+</html>

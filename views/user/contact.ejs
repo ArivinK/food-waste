@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ../partials/index_header.ejs %>
+
+<body>
+<%- include ../partials/nav.ejs %>
+   
+<div class="jumbotron" id="jumbo" style="margin-bottom:0px">
+    <h3 id="donate"><i class="fa fa-envelope" aria-hidden="true"></i>Contact Us</h3>
+</div> 
+ 
+<div class="row jumbo" id="map_canvas" style="margin-bottom:40px">
+
+</div>
+  
+<div class="container" style="margin-bottom: 70px;">
+   <div class="row">
+          <div class="col-md-12">
+                <h2 class="text-uppercase text-center">Send Message</h2>
+                <div class="row divider"></div>
+          </div>
+          
+          <div class="col-md-12" id="fact-div">
+            <p class="text-center"></p>
+        </div>
+    </div>
+   
+   
+    <div class="row" id="contactRow">
+            
+       <form action="/user/contact" method="post">
+
+          <div class="row form-group input_group">
+               <div class="col-md-6">
+                   <input type="text" name="name" id="name" class="form-control" placeholder="Name*">
+               </div>
+
+               <div class="col-md-6">
+                   <input type="text" name="email" id="email" class="form-control" placeholder="Email*">
+               </div>
+
+           </div>
+
+           <div class="row form-group input_group">
+
+               <div class="col-md-12">
+                   <textarea name="message" id="message" class="form-control" cols="30" rows="10" placeholder="Message*"></textarea>
+               </div>
+
+           </div>
+
+
+           <div class="row form-group text-center">
+              <input type="submit" name="msg" id="info" class="form-control btn btn-primary" value="Send Message">
+           </div>
+
+
+       </form>
+   </div>
+</div>
+   
+
+<%- include ../partials/footer.ejs %>     
+   
+   
+<script>
+function initMap() {
+    getCoordinates('24 Rue albert en marie louise servais kinet,1200 woluwe', function(coords){
+        console.log("Latitude",coords[0])
+        console.log("Longitude",coords[1])
+        var mapOptions = {
+            zoom: 18,
+            scrollwheel: false,
+            center: new google.maps.LatLng(coords[0], coords[1]),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    
+        var myLatLng = {lat: coords[0], lng: coords[1]};
+        
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    
+        
+    });
+}
+
+
+function getCoordinates(address, callback) {
+    var coordinates;
+    
+    geocoder = new google.maps.Geocoder();
+    
+    geocoder.geocode({address: address}, function(results, status){
+        coords_obj1 = results[0].geometry.location.lat();
+        coords_obj2 = results[0].geometry.location.lng();
+        coordinates = [coords_obj1, coords_obj2];
+        callback(coordinates);
+    })
+}
+    
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBBR43OmMIqp6GQVTqnFveNQ6xIrBvdPM4&callback=initMap"></script>
+    
+</body>
+</html>

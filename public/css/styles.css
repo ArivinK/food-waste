@@ -1,0 +1,133 @@
+.nav_bar{
+    margin-bottom: 0px;
+    color: #666666;
+}
+
+.jumbo{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    height: 450px;
+}
+
+.signup{
+    text-align: center;
+    width: 50%;
+    height: auto;
+    margin: auto;
+}
+
+.reg_msg{
+    width: 60%;
+    height: auto;
+    margin: auto;
+}
+
+.input_group input{
+    height: 50px;
+    font-size: 17px;
+    margin: 0 0 19px 0;
+    padding: 12px 21px 12px 21px;
+    border: 1px solid #efefef;
+}
+
+.col-md-4 input{
+    margin: 0 0 30px 0;
+}
+
+#donortype{
+    height: 50px;
+    font-size: 17px;
+    margin: 0 0 30px 0;
+    padding: 12px 21px 12px 21px;
+    border: 1px solid white;
+}
+
+#info{
+    height: 52px;
+    width: 200px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+    padding: 12px 38px 12px 38px;
+}
+
+input[type="submit"]{
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white !important;
+}
+
+#description{
+    font-size: 17px;
+    margin: 0 0 19px 0;
+    padding: 12px 21px 12px 21px;
+    border: 1px solid #efefef;
+}
+
+#message{
+    font-size: 17px;
+    margin: 0 0 19px 0;
+    padding: 12px 21px 12px 21px;
+    border: 1px solid #efefef;
+}
+
+/*****************************************Parallax CSS********************************************************/
+
+
+/*
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 575%;
+    color: #4A4444;
+    text-transform: uppercase;
+    letter-spacing: 1%;
+    margin: 25% 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 275%;
+    color: #E5E5E5;
+    text-transform: uppercase;
+    letter-spacing: 1%;
+}
+
+h3 {
+    text-align: center;
+    font-size: 275%;
+    color: #A3F3D3;
+    text-transform: uppercase;
+    letter-spacing: 1%;
+}
+
+.parallax {
+    background: url("http://www.thenewstrans.com/wp-content/uploads/2013/09/Child-Beggars.gif") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.parallax2 {
+    background: url("http://www.w3newbie.com/wp-content/uploads/parallax-background.png") repeat fixed 100%;
+
+}
+
+.parallax-inner {
+    padding-top: 15%;
+    padding-bottom: 15%;
+
+}
+*/

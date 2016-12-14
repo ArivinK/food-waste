@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stop Food Waste - <%= userData.name %></title>
+    <title><%= title %> || <%= userData.name %></title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="/css/custom.css">
+    <link href="/css/styles.css" rel="stylesheet" >
+    <link rel="stylesheet" href="/css/Footer-Dark.css">
 </head>
-
-
-
-
-
 <body>
-<nav class="navbar navbar-default nav_bar">
+<nav class="navbar " id="nav-bar">
   <div class="container">
     
     <div class="navbar-header">
@@ -24,18 +23,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/user/home">Stop Food Waste</a>
+      <a class="navbar-brand head-brand" href="/user/home">Stop Food Waste</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-       <li><a href="#" class="">Images</a></li>
+      <ul class="nav navbar-nav navbar-right" id="nav_lists">
+       <li><a href="/user/image-gallery" class="">Images</a></li>
         <li><a href="#" class="">Food Donors</a></li>
         <li><a href="#" class="">Blog</a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= userData.name %> <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" >
             <li><a href="/user/add-profile">Add Profile</a></li>
             <li><a href="/user/profile">View Profile</a></li>
             <li><a href="#">Something else here</a></li>
@@ -47,9 +46,9 @@
       </ul>
     </div>
   </div>
-</nav> 
+</nav>  
 
-<div class="jumbotron jumbo" id="map_canvas">
+<div class="row jumbo" id="map_canvas" style="height:400px;">
 
 </div>
 
@@ -229,11 +228,13 @@
 
 <script>
 function initMap() {
-    getCoordinates('<%= infoData.address %> <%= infoData.city %>', function(coords){
+    var data = '<%= infoData.address %> <%= infoData.city %>'
+    getCoordinates(data, function(coords){
         console.log("Latitude",coords[0])
         console.log("Longitude",coords[1])
         var mapOptions = {
             zoom: 16,
+            scrollwheel: false,
             center: new google.maps.LatLng(coords[0], coords[1]),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };

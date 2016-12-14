@@ -5,8 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 var infoSchema = mongoose.Schema({
     donor: {type: String},
     name: {type: String},
-    email: {type: String},
-    password: {type: String},
+    email: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     phone: {type: Number},
     address: {type: String},
     city: {type: String},
@@ -14,7 +13,6 @@ var infoSchema = mongoose.Schema({
     donortype: {type: String},
     food: {type: String},
     time: {type: Date},
-    val: {type: Number},
     created: Date
     
 });

@@ -6,21 +6,18 @@ var session = require('express-session');
 var passport = require('passport');
 var MongoStore = require('connect-mongo')(session);
 
+var app = express();
+
 
 var user = require('./controllers/user');
 var ngo = require('./controllers/ngo');
 var donor = require('./controllers/donor');
 
-var app = express();
-
 var db
 
-<<<<<<< HEAD
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://anu:happyanu123@ds113678.mlab.com:13678/fooddb');
-=======
-mongoose.connect('mongodb://anu:happyanu123@ds113678.mlab.com:13678/fooddb');
->>>>>>> 4e0047e29775a0c49654cabc553f215fa756aa81
+
 mongoose.connect('mongodb://localhost/foodwaste');
 require('./config/passport');
 //require('./config/pass');

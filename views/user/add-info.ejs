@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include ../partials/header.ejs %>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar" id="nav-bar">
   <div class="container">
     
     <div class="navbar-header">
@@ -12,15 +12,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/user/profile">Stop Food Waste</a>
+      <a class="navbar-brand head-brand" href="/user/add-info">Stop Food Waste</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="add-info" class="">Make A Food Donation</a></li>
+       <li><a href="/user/view-charity" class="">View Charity Org.</a></li>
         
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= userData.name %> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= userData.name %><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/user/add-profile">Add Profile</a></li>
             <li><a href="/user/profile">View Profile</a></li>
@@ -34,78 +34,69 @@
     </div>
   </div>
 </nav>
+
    
-   <div class="container">
-       <div class="row">
+<div class="jumbotron" id="jumbo">
+    <h3 id="donate"><i class="fa fa-hand-paper-o"></i>Donation Page</h3>
+</div> 
+           
+<div class="container" style="margin-bottom:20px;">
+    <div class="row">
+          <div class="col-md-12">
+                <h2 class="text-uppercase text-center">Donation Information</h2>
+                <div class="row divider"></div>
+          </div>
+          
+          <div class="col-md-12" id="fact-div">
+            <p class="text-center"></p>
+        </div>
+    </div>
+</div>     
+            
+<div class="container" style="height:400px;">
+      
+      <div class="row">
+            
            <form action="/user/add-info" method="post">
-              <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">Donor name</label>
+             
+              <div class="row form-group input_group">
+                   <div class="col-md-4">
+                       <input type="text" name="donor" id="donor" class="form-control" placeholder="Donor Name">
                    </div>
                    
-                   <div class="col-md-10">
-                       <input type="text" name="donor" id="donor" class="form-control">
+                   <div class="col-md-4">
+                       <input type="text" name="name" id="name" class="form-control" placeholder="Name of Contact Person">
+                   </div>
+                   
+                   <div class="col-md-4">
+                       <input type="number" name="phone" id="phone" class="form-control" placeholder="Phone Number">
                    </div>
                </div>
               
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">Name of Contact Person</label>
+               
+               <div class="row form-group input_group">
+                   
+                   <div class="col-md-4">
+                       <input type="text" name="address" id="address" class="form-control" placeholder="Address">
                    </div>
                    
-                   <div class="col-md-10">
-                       <input type="text" name="name" id="name" class="form-control">
+                   <div class="col-md-4">
+                       <input type="text" name="city" id="city" class="form-control" placeholder="City">
+                   </div>
+                   
+                   <div class="col-md-4">
+                       <input type="text" name="state" id="state" class="form-control" placeholder="State">
                    </div>
                </div>
                
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">Phone Number</label>
-                   </div>
-                   
-                   <div class="col-md-10">
-                       <input type="number" name="phone" id="phone" class="form-control">
-                   </div>
-               </div>
                
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">Address</label>
-                   </div>
-                   
-                   <div class="col-md-10">
-                       <input type="text" name="address" id="address" class="form-control">
-                   </div>
-               </div>
                
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">City</label>
-                   </div>
-                   
-                   <div class="col-md-10">
-                       <input type="text" name="city" id="city" class="form-control">
-                   </div>
-               </div>
                
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">State</label>
-                   </div>
+               <div class="row form-group input_group">
                    
-                   <div class="col-md-10">
-                       <input type="text" name="state" id="state" class="form-control">
-                   </div>
-               </div>
-               
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">Type of Donor</label>
-                   </div>
-                   
-                   <div class="col-md-10">
+                   <div class="col-md-4">
                        <select name="donortype" id="donortype" class="form-control">
-                           <option value="">Select type of donor</option>
+                           <option value="">Select Type of Donor</option>
                            <option value="Individual">Individual</option>
                            <option value="Restaurant">Restaurant</option>
                            <option value="Grocery">Grocery</option>
@@ -113,38 +104,27 @@
                            <option value="Cafe">Cafe</option>
                        </select>
                    </div>
-               </div>
-               
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">Type of Food</label>
+                   
+                   <div class="col-md-4">
+                       <input type="text" name="food" id="food" class="form-control" placeholder="Type of Food">
                    </div>
                    
-                   <div class="col-md-10">
-                       <input type="text" name="food" id="food" class="form-control">
+                   <div class="col-md-4">
+                       <input type="text" name="time" id="time" class="form-control" placeholder="Pickup Date: MM/DD/YY">
                    </div>
                </div>
                
-               <div class="row form-group">
-                   <div class="col-md-2">
-                       <label for="">Pick Up Date</label>
-                   </div>
-                   
-                   <div class="col-md-10">
-                       <input type="text" name="time" id="time" class="form-control" placeholder="MM/DD/YY">
-                   </div>
-               </div>
                
-               <div class="row form-group">
-              <div class="col-sm-12">
-                  <input type="submit" name="info" id="info" class="form-control btn btn-primary" value="Add Info">
-              </div>
+               <div class="row form-group text-center">
+<!--              <div class="col-sm-12">-->
+                  <input type="submit" name="info" id="info" class="form-control btn btn-primary" value="Submit Now!">
+<!--              </div>-->
           </div>
                
                
            </form>
        </div>
-   </div>
+</div>
      
 <%- include ../partials/footer.ejs %>  
 </body>

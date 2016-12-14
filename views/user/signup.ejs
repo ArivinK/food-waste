@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include ../partials/header.ejs %>
+<%- include ../partials/index_header.ejs %>
 <body>
 <%- include ../partials/nav.ejs %>
    
-   <div class="container">
-       <div class="row">
+   <div class="container" style="margin-bottom: 100px">
+      
+      <div class="text-center reg_msg">
+            <h2 style="color:#808080"><span>SIGN UP</span></h2>
+       </div><br>
+      
+      
+       <div class="row signup">
      <form action="/user/signup" method="post">
 
-         <div class="row form-group">
+         <div class="row form-group input_group">
               <div class="col-sm-12">
                   <input type="text" name="name" id="fullname" class="form-control" placeholder="Organization or Donor's Name">
               </div>
           </div>
 
-          <div class="row form-group">
+          <div class="row form-group input_group">
               <div class="col-sm-12">
                   <input type="text" name="email" id="email" class="form-control" placeholder="Organization or Donor's Email">
               </div>
           </div>
 
-          <div class="row form-group">
+          <div class="row form-group input_group">
               <div class="col-sm-12">
                   <input type="password" name="password" id="password" class="form-control" placeholder="Password">
               </div>
           </div>
 
-          <div class="row form-group">
+          <div class="row form-group input_group">
               <div class="col-sm-12">
                   <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Confirm Password">
               </div>
